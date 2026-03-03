@@ -4,3 +4,4 @@ dist
 storybook-static
 .turbo
 .DS_Store
+.pnpm-store
