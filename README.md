@@ -6,7 +6,7 @@ pnpm + Turborepo 기반 모노레포입니다.
 
 - [x] 터보레포를 설치해 주세요. (패키지 매니저는 pnpm)
 - [x] 터보레포의 워크스페이스 2개의 워크스페이스를 만들어주세요. (web, storybook)
-- [ ] web 워크스페이스의 작업은 첨부한 피그마를 참고해서 만들어주세요.
+- [x] web 워크스페이스의 작업은 첨부한 피그마를 참고해서 만들어주세요.
 - [x] 터보레포 ui 패키지에 버튼을 만들어 주세요.
 - [x] 생성한 버튼의 스토리북을 만들어주세요. (상태별)
 - [x] 생성한 버튼을 web에 import해서 사용해주세요.
@@ -14,7 +14,7 @@ pnpm + Turborepo 기반 모노레포입니다.
 - [x] 사진 조회 전 route : `"/"`, 조회 후 : `"/result"`
 - [x] 사진 조회 api는 `"https://picsum.photos/id/0/info"` 을 이용해주세요.
 - [x] 사진 조회 api 통신 후 response를 `"/result"` 페이지에 전달하는 방식으로 만들어주세요.
-- [ ] github에 Public으로 해당 프로젝트를 올려주세요.
+- [x] github에 Public으로 해당 프로젝트를 올려주세요.
 - [ ] web 워크스페이스를 vercel을 사용해서 배포해주세요.
 - [ ] Github url과 배포 Url을 메일로 회신해주세요.
 
@@ -48,6 +48,7 @@ pnpm --filter storybook dev
 ```
 
 참고:
+
 - 현재 이 환경에서는 `registry.npmjs.org` DNS 접근이 막혀 `pnpm install`이 실패할 수 있습니다.
 
 ## 구조
@@ -59,6 +60,7 @@ pnpm --filter storybook dev
 ## 배포
 
 ### web (Vercel)
+
 1. Vercel에 리포지토리 연결
 2. Root Directory: `apps/web`
 3. Build Command: `pnpm build --filter web`
@@ -71,4 +73,5 @@ pnpm --filter storybook build
 ```
 
 생성된 `apps/storybook/storybook-static`을 배포합니다.
+
 # openplan
