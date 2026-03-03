@@ -43,11 +43,9 @@ a {
 
 .app-header__title {
   font-size: 15px;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #111111;
 }
 
 .page {
@@ -216,48 +214,40 @@ a {
   position: relative;
   overflow: hidden;
   min-height: 100dvh;
-  padding: 52px 0 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
+  padding: 88px 24px 36px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #fafafa;
 }
 
 .result-page::before {
   content: "";
   position: absolute;
-  width: 1475px;
-  height: 2420px;
-  left: calc(50% - 737.5px - 17.5px);
-  top: calc(50% - 1210px - 47px);
+  inset: -48px;
   background-image: inherit;
   background-size: cover;
   background-position: center;
-  opacity: 0.3;
-  filter: blur(20px) grayscale(60%) saturate(0.72);
-  transform: none;
+  filter: blur(30px) grayscale(82%) saturate(0.55) brightness(1.08) contrast(0.9);
+  transform: scale(1.12);
   z-index: 0;
 }
 
 .result-page::after {
   content: "";
   position: absolute;
-  width: 1475px;
-  height: 2420px;
-  left: calc(50% - 737.5px - 17.5px);
-  top: calc(50% - 1210px - 47px);
+  inset: 0;
   background:
-    linear-gradient(180deg, #d9d9d9 0%, rgba(217, 217, 217, 0) 100%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.02) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(255, 255, 255, 0) 2px,
-      rgba(255, 255, 255, 0) 4px
+    linear-gradient(
+      180deg,
+      rgba(214, 214, 214, 0.92) 0%,
+      rgba(219, 219, 219, 0.72) 46%,
+      rgba(226, 226, 226, 0.34) 100%
+    ),
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(248, 248, 248, 0.5),
+      rgba(248, 248, 248, 0.12) 48%,
+      rgba(248, 248, 248, 0) 100%
     );
   z-index: 0;
 }
@@ -265,22 +255,21 @@ a {
 .result-layout {
   position: relative;
   z-index: 1;
-  width: min(1440px, 100%);
-  min-height: 928px;
+  margin: 0 auto;
+  max-width: 1320px;
+  min-height: calc(100dvh - 124px);
   display: grid;
-  grid-template-columns: minmax(0, 700px) minmax(0, 700px);
-  justify-content: center;
+  grid-template-columns: minmax(420px, 1fr) minmax(360px, 430px);
   align-items: center;
-  gap: 40px;
+  gap: 52px;
 }
 
 .result-media {
   position: relative;
-  width: 660px;
-  height: 439.7px;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 18px 42px rgba(17, 24, 39, 0.2);
+  aspect-ratio: 16 / 10;
 }
 
 .result-media__skeleton {
@@ -297,18 +286,15 @@ a {
 }
 
 .result-side {
-  width: 700px;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 16px;
   justify-items: center;
-  gap: 60px;
 }
 
 .result-info {
-  width: 660px;
+  width: 100%;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .result-info__row {
@@ -318,7 +304,6 @@ a {
   align-items: flex-start;
   padding: 20px;
   gap: 16px;
-  width: 660px;
   min-height: 82px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.01);
@@ -335,34 +320,29 @@ a {
 
 .result-info__row--stack {
   flex-direction: column;
-  min-height: 140px;
 }
 
 .result-info__label {
   margin: 0 0 6px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
   color: #111111;
 }
 
 .result-info__value {
   margin: 0;
   font-size: 15px;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.02em;
-  color: rgba(17, 17, 17, 0.5);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #7a7a7a;
 }
 
 .result-info__link {
   display: block;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 140%;
-  letter-spacing: -0.02em;
-  color: rgba(17, 17, 17, 0.5);
+  font-size: 16px;
+  line-height: 1.25;
+  color: #7a7a7a;
   text-decoration: underline;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -372,31 +352,16 @@ a {
 @media (max-width: 1024px) {
   .result-layout {
     grid-template-columns: 1fr;
-    width: min(760px, 100%);
-    min-height: auto;
+    max-width: 760px;
     gap: 24px;
   }
 
   .result-media {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 10;
     max-height: 360px;
   }
 
   .result-side {
-    width: 100%;
-    padding: 0;
     justify-items: stretch;
-    gap: 24px;
-  }
-
-  .result-info {
-    width: 100%;
-  }
-
-  .result-info__row {
-    width: 100%;
   }
 
   .result-side > button[data-size="m"] {
@@ -407,8 +372,7 @@ a {
 @media (max-width: 768px) {
   .result-page {
     min-height: 100dvh;
-    padding: 60px 16px 24px;
-    gap: 20px;
+    padding: 72px 16px 24px;
   }
 
   .result-layout {
