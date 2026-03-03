@@ -2,7 +2,7 @@
 
 import { Button } from "@repo/ui";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ResultInfoCard } from "@/src/components/ResultInfoCard";
 import { usePhotoStore } from "@/src/store/photo-store";
 
@@ -10,6 +10,7 @@ export default function ResultPage() {
   const router = useRouter();
   const hasHistory = usePhotoStore((state) => state.hasHistory);
   const photo = usePhotoStore((state) => state.lastPhoto);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     if (!hasHistory) {
@@ -20,6 +21,10 @@ export default function ResultPage() {
     }
     return undefined;
   }, [hasHistory, router]);
+
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, [photo?.download_url]);
 
   if (!hasHistory || !photo) {
     return (
@@ -41,7 +46,15 @@ export default function ResultPage() {
     >
       <div className="result-layout">
         <section className="result-media">
-          <img src={photo.download_url} alt={photo.author} className="result-media__img" />
+          {!isImageLoaded ? <div className="result-media__skeleton skeleton" /> : null}
+          <img
+            src={photo.download_url}
+            alt={photo.author}
+            className="result-media__img"
+            onLoad={() => setIsImageLoaded(true)}
+            onError={() => setIsImageLoaded(true)}
+            style={{ opacity: isImageLoaded ? 1 : 0 }}
+          />
         </section>
 
         <section className="result-side">
