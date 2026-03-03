@@ -43,9 +43,11 @@ a {
 
 .app-header__title {
   font-size: 15px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #111111;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
 }
 
 .page {
@@ -211,28 +213,74 @@ a {
 }
 
 .result-page {
+  position: relative;
+  overflow: hidden;
   min-height: 100dvh;
-  padding: 88px 24px 36px;
+  padding: 52px 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fafafa;
+}
+
+.result-page::before {
+  content: "";
+  position: absolute;
+  width: 1475px;
+  height: 2420px;
+  left: calc(50% - 737.5px - 17.5px);
+  top: calc(50% - 1210px - 47px);
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  filter: blur(20px) grayscale(60%) saturate(0.72);
+  transform: none;
+  z-index: 0;
+}
+
+.result-page::after {
+  content: "";
+  position: absolute;
+  width: 1475px;
+  height: 2420px;
+  left: calc(50% - 737.5px - 17.5px);
+  top: calc(50% - 1210px - 47px);
+  background:
+    linear-gradient(180deg, #d9d9d9 0%, rgba(217, 217, 217, 0) 100%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.02) 0px,
+      rgba(0, 0, 0, 0.02) 1px,
+      rgba(255, 255, 255, 0) 2px,
+      rgba(255, 255, 255, 0) 4px
+    );
+  z-index: 0;
 }
 
 .result-layout {
-  margin: 0 auto;
-  max-width: 1320px;
-  min-height: calc(100dvh - 124px);
+  position: relative;
+  z-index: 1;
+  width: min(1440px, 100%);
+  min-height: 928px;
   display: grid;
-  grid-template-columns: minmax(420px, 1fr) minmax(360px, 430px);
+  grid-template-columns: minmax(0, 700px) minmax(0, 700px);
+  justify-content: center;
   align-items: center;
-  gap: 52px;
+  gap: 40px;
 }
 
 .result-media {
   position: relative;
-  border-radius: 20px;
+  width: 660px;
+  height: 439.7px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 18px 42px rgba(17, 24, 39, 0.2);
-  aspect-ratio: 16 / 10;
 }
 
 .result-media__skeleton {
@@ -249,15 +297,18 @@ a {
 }
 
 .result-side {
-  display: grid;
-  gap: 16px;
+  width: 700px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
   justify-items: center;
+  gap: 60px;
 }
 
 .result-info {
-  width: 100%;
+  width: 660px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .result-info__row {
@@ -267,6 +318,7 @@ a {
   align-items: flex-start;
   padding: 20px;
   gap: 16px;
+  width: 660px;
   min-height: 82px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.01);
@@ -283,29 +335,34 @@ a {
 
 .result-info__row--stack {
   flex-direction: column;
+  min-height: 140px;
 }
 
 .result-info__label {
   margin: 0 0 6px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 140%;
+  letter-spacing: -0.02em;
   color: #111111;
 }
 
 .result-info__value {
   margin: 0;
   font-size: 15px;
-  font-weight: 400;
-  line-height: 1.25;
-  color: #7a7a7a;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: rgba(17, 17, 17, 0.5);
 }
 
 .result-info__link {
   display: block;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #7a7a7a;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: rgba(17, 17, 17, 0.5);
   text-decoration: underline;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -315,16 +372,31 @@ a {
 @media (max-width: 1024px) {
   .result-layout {
     grid-template-columns: 1fr;
-    max-width: 760px;
+    width: min(760px, 100%);
+    min-height: auto;
     gap: 24px;
   }
 
   .result-media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
     max-height: 360px;
   }
 
   .result-side {
+    width: 100%;
+    padding: 0;
     justify-items: stretch;
+    gap: 24px;
+  }
+
+  .result-info {
+    width: 100%;
+  }
+
+  .result-info__row {
+    width: 100%;
   }
 
   .result-side > button[data-size="m"] {
@@ -335,7 +407,8 @@ a {
 @media (max-width: 768px) {
   .result-page {
     min-height: 100dvh;
-    padding: 72px 16px 24px;
+    padding: 60px 16px 24px;
+    gap: 20px;
   }
 
   .result-layout {
