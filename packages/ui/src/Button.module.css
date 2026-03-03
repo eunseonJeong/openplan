@@ -25,7 +25,6 @@
 
 .button[data-size="l"] {
   width: 335px;
-  max-width: 100%;
   height: 48px;
   flex: none;
   flex-grow: 0;
@@ -71,13 +70,6 @@
 }
 
 @media (max-width: 768px) {
-  .button[data-size="l"] {
-    width: 100%;
-    min-width: 0;
-    height: 56px;
-    border-radius: 10px;
-  }
-
   .button[data-size="m"] {
     width: min(154px, 100%);
     height: 46px;
@@ -90,11 +82,6 @@
 }
 
 @media (max-width: 480px) {
-  .button[data-size="l"] {
-    height: 52px;
-    padding: 10px;
-  }
-
   .button[data-size="m"] {
     height: 44px;
     padding: 10px;
